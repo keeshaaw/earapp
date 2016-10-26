@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sg.app</groupId>
+	<artifactId>earapp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>ear</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sg.app</groupId>
+			<artifactId>currencyconverter</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.10.1</version>
+				<configuration>
+					<modules>
+						<ejbModule>
+							<groupId>com.sg.app</groupId>
+							<artifactId>currencyconverter</artifactId>
+						</ejbModule>
+					</modules>
+					<displayName>MyApp</displayName>
+					<!-- If I want maven to generate the application.xml, set this to true -->
+					<generateApplicationXml>true</generateApplicationXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
